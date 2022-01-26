@@ -3,10 +3,13 @@ package com.compose.hydration.model
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
+import com.compose.hydration.R
 
 sealed class Destination(
     val path: String,
-    val icon: ImageVector? = null,
+    val icon: Int? = null,
     val isRootDestination: Boolean = true
 ) {
     companion object {
@@ -27,11 +30,13 @@ sealed class Destination(
 
     object Home : Destination("home")
 
-    object History : Destination("history")
+    object Today : Destination("today", R.drawable.ic_today)
 
-    object Settings : Destination("settings", Icons.Default.ArrowBack, false)
+    object History : Destination("history", R.drawable.ic_history)
 
-    object DailyGoal : Destination("dailyGoal")
+    object Settings : Destination("settings", R.drawable.ic_back, isRootDestination = false)
 
-    object Container : Destination("Container")
+    object DailyGoal : Destination("dailyGoal", isRootDestination = false)
+
+    object Container : Destination("Container", isRootDestination = false)
 }
