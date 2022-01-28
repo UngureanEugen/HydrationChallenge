@@ -22,6 +22,9 @@ fun Navigation(modifier: Modifier = Modifier, navController: NavHostController) 
             composable(Destination.Today.path) {
                 Today(modifier = modifier)
             }
+            composable(Destination.Settings.path) {
+                Settings(modifier = modifier)
+            }
         }
         composable(Destination.History.path) {
             // History

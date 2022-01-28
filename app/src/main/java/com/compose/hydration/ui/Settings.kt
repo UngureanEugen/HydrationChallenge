@@ -19,7 +19,7 @@ import com.compose.hydration.R
 import com.compose.hydration.ui.theme.HydrationChallengeTheme
 
 @Composable
-fun Settings() {
+fun Settings(modifier: Modifier = Modifier) {
 }
 
 @Composable
@@ -45,7 +45,6 @@ fun SettingsList(
                 text = stringResource(id = R.string.title_settings)
             )
         }
-
     }
 }
 
