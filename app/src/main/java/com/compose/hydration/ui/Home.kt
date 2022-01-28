@@ -22,17 +22,28 @@ fun Home(modifier: Modifier = Modifier, orientation: Int) {
     }
     val scaffoldState = rememberScaffoldState()
     val coroutineScope = rememberCoroutineScope()
-    Scaffold(modifier = modifier, scaffoldState = scaffoldState, /*TopAppBar*/ bottomBar = {
-        BottomNavigationBar(currentDestination = currentDestination, onNavigate = { destination ->
-            navController.navigate(destination.path) {
-                popUpTo(navController.graph.findStartDestination().id) {
-                    saveState = true
-                }
-                launchSingleTop = true
-                restoreState = true
-            }
-        })
-    }) {
+    Scaffold(
+        modifier = modifier,
+        scaffoldState = scaffoldState,
+        bottomBar = {
+            BottomNavigationBar(
+                currentDestination = currentDestination,
+                onNavigate = { destination ->
+                    navController.navigate(destination.path) {
+                        popUpTo(navController.graph.findStartDestination().id) {
+                            saveState = true
+                        }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                })
+        },
+        topBar = {
+            DestinationTopBar(
+                modifier = modifier,
+                currentDestination = currentDestination
+            )
+        }) {
         Navigation(modifier = Modifier.fillMaxSize(), navController = navController)
     }
 }

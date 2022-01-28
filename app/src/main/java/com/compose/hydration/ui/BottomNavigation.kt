@@ -6,9 +6,7 @@ import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
-import com.compose.hydration.Tags.TAG_BOTTOM_NAVIGATION
 import com.compose.hydration.model.Destination
 import com.compose.hydration.model.NavigationItem.Companion.buildNavigationItems
 import com.compose.hydration.ui.theme.HydrationChallengeTheme
@@ -19,7 +17,10 @@ fun BottomNavigationBar(
     currentDestination: Destination,
     onNavigate: (destination: Destination) -> Unit
 ) {
-    BottomNavigation(modifier = modifier.testTag(TAG_BOTTOM_NAVIGATION)) {
+    BottomNavigation(
+        modifier = modifier,
+        backgroundColor = MaterialTheme.colors.surface.copy(alpha = 0.8f)
+    ) {
         buildNavigationItems(
             currentDestination = currentDestination,
             onNavigate = onNavigate

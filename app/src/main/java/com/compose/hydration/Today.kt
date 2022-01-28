@@ -23,7 +23,8 @@ fun Today(modifier: Modifier = Modifier) {
             painter = painterResource(R.drawable.leaf_bg),
             contentDescription = null,
             modifier = Modifier.fillMaxSize(),
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
+            alpha = 0.5f
         )
         Column(
             modifier = modifier,
@@ -41,20 +42,30 @@ fun Today(modifier: Modifier = Modifier) {
                 modifier = Modifier.padding(bottom = 8.dp)
             )
             Glass()
-            Row(modifier = Modifier.padding(vertical = 32.dp)) {
-                Button(onClick = {}) {
-                    Text("container 1")
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 32.dp),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Button(onClick = {}, modifier = Modifier.weight(1f, fill = false)) {
+                    Text("200 ml", style = MaterialTheme.typography.button)
                 }
-                Button(onClick = {}, modifier = Modifier.padding(horizontal = 8.dp)) {
-                    Text("container 1")
+                Button(
+                    onClick = {},
+                    modifier = Modifier.weight(1f, fill = false).padding(horizontal = 8.dp)
+                ) {
+                    Text("400 ml")
                 }
-                Button(onClick = {}) {
-                    Text("container 1")
+                Button(onClick = {}, modifier = Modifier.weight(1f, fill = false)) {
+                    Text("500 ml")
                 }
             }
             Text(
                 text = "Happy you'are back to track your healthy habit of staying hydrated",
-                textAlign = TextAlign.Center
+                modifier = Modifier.padding(horizontal = 32.dp),
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.body2
             )
         }
     }

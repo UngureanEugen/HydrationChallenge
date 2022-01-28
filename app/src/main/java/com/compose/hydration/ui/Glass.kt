@@ -36,7 +36,7 @@ fun Glass(modifier: Modifier = Modifier) {
             val path = Path().apply {
                 relativeLineTo(glassPainter.width, 0f)
                 relativeLineTo(-glassPainter.width / 5, glassPainter.height)
-                relativeLineTo(-glassPainter.width / 3, size.height)
+                relativeLineTo(-glassPainter.width / 3, glassPainter.height)
                 close()
             }
             inset(horizontal = 0f, vertical = 4f) {
