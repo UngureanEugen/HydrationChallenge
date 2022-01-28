@@ -7,6 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
+import com.compose.hydration.Today
 import com.compose.hydration.model.Destination
 
 @Composable
@@ -19,7 +20,7 @@ fun Navigation(modifier: Modifier = Modifier, navController: NavHostController) 
         navigation(startDestination = Destination.Today.path, route = Destination.Home.path) {
             // Today
             composable(Destination.Today.path) {
-                Text(text = "Today")
+                Today(modifier = modifier)
             }
         }
         composable(Destination.History.path) {
