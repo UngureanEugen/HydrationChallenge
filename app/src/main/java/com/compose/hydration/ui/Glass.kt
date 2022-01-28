@@ -26,7 +26,7 @@ import com.compose.hydration.R
 fun Glass(modifier: Modifier = Modifier) {
     val vector = ImageVector.vectorResource(id = R.drawable.ic_glass_empty)
     val painter = rememberVectorPainter(image = vector)
-    val progress = -0.5f
+    val progress = 0.5f
     Box(
         contentAlignment = Alignment.BottomCenter,
         modifier = modifier.wrapContentSize()
@@ -48,7 +48,7 @@ fun Glass(modifier: Modifier = Modifier) {
                         SolidColor(Color.White),
                         size = Size(
                             size.width,
-                            progress * size.height
+                            -progress * size.height
                         ), topLeft = Offset(0f, size.height),
                         alpha = 0.4f
                     )

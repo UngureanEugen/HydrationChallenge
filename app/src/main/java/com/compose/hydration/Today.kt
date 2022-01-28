@@ -10,7 +10,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.compose.hydration.ui.Glass
 import com.compose.hydration.ui.theme.HydrationChallengeTheme
 
@@ -31,24 +33,30 @@ fun Today(modifier: Modifier = Modifier) {
             Text(
                 text = "20%",
                 style = MaterialTheme.typography.h4,
-                color = MaterialTheme.colors.primaryVariant
+                color = MaterialTheme.colors.primary
             )
-            Text(text = "of 2000 ml Goal")
-            Glass(modifier = modifier.wrapContentSize())
-            Row {
+            Text(
+                text = "of 2000 ml Goal",
+                style = MaterialTheme.typography.body2,
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
+            Glass()
+            Row(modifier = Modifier.padding(vertical = 32.dp)) {
                 Button(onClick = {}) {
                     Text("container 1")
                 }
-                Button(onClick = {}) {
+                Button(onClick = {}, modifier = Modifier.padding(horizontal = 8.dp)) {
                     Text("container 1")
                 }
                 Button(onClick = {}) {
                     Text("container 1")
                 }
             }
-            Text(text = "Happy you'are back to track your healthy habit of staying hydrated")
+            Text(
+                text = "Happy you'are back to track your healthy habit of staying hydrated",
+                textAlign = TextAlign.Center
+            )
         }
-
     }
 }
 

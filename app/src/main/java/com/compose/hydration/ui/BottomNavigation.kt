@@ -29,8 +29,8 @@ fun BottomNavigationBar(
                 icon = { destination.icon() },
                 label = { destination.label() },
                 onClick = { destination.onClick() },
-                selectedContentColor = MaterialTheme.colors.secondary,
-                unselectedContentColor = MaterialTheme.colors.onPrimary
+                selectedContentColor = MaterialTheme.colors.primary,
+                unselectedContentColor = MaterialTheme.colors.onSurface
             )
         }
     }

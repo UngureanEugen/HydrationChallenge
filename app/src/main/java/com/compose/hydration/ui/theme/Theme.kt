@@ -8,19 +8,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 private val DarkColorPalette = darkColors(
-    primary = Black,
-    primaryVariant = Green,
-    secondary = Green,
-    secondaryVariant = Yellow
+    primary = Green,
 )
 
 private val LightColorPalette = lightColors(
     primary = Black,
     primaryVariant = Green,
     secondary = Green,
-    secondaryVariant = Yellow
+    secondaryVariant = Yellow,
 
-    /* Other default colors to override
+    /*
+    primaryVariant = Green,
+    secondary = Green,
+    secondaryVariant = Yellow,
+
+    Other default colors to override
     background = Color.White,
     surface = Color.White,
     onPrimary = Color.White,
@@ -35,11 +37,11 @@ fun HydrationChallengeTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable() () -> Unit
 ) {
-    val colors = if (darkTheme) {
+    val colors = /*if (darkTheme) {*/
         DarkColorPalette
-    } else {
+    /*} else {
         LightColorPalette
-    }
+    }*/
 
     MaterialTheme(
         colors = colors,

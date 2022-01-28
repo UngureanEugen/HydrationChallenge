@@ -9,8 +9,20 @@
         <entry key="../../../../layout/compose-model-1643214578711.xml" value="0.33" />
         <entry key="../../../../layout/compose-model-1643287745051.xml" value="0.75" />
         <entry key="../../../../layout/compose-model-1643311396781.xml" value="1.0" />
-        <entry key="../../../../layout/compose-model-1643311472097.xml" value="0.25" />
+        <entry key="../../../../layout/compose-model-1643311472097.xml" value="0.33" />
         <entry key="../../../../layout/compose-model-1643363204764.xml" value="0.8308668076109936" />
+        <entry key="../../../../layout/compose-model-1643363349738.xml" value="0.8308668076109936" />
+        <entry key="../../../../layout/compose-model-1643366876254.xml" value="0.2972222222222222" />
+        <entry key="../../../../layout/compose-model-1643367009696.xml" value="0.678646934460888" />
+        <entry key="../../../../layout/compose-model-1643368833834.xml" value="0.21368243243243243" />
+        <entry key="../../../../layout/compose-model-1643370259402.xml" value="0.21368243243243243" />
+        <entry key="../../../../layout/compose-model-1643370308173.xml" value="0.678646934460888" />
+        <entry key="app/src/main/res/drawable/ic_back.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/drawable/ic_glass_empty.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/drawable/ic_history.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/drawable/ic_settings.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/drawable/ic_today.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
