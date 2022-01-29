@@ -26,22 +26,30 @@ fun Home(modifier: Modifier = Modifier, orientation: Int) {
         modifier = modifier,
         scaffoldState = scaffoldState,
         bottomBar = {
-            BottomNavigationBar(
-                currentDestination = currentDestination,
-                onNavigate = { destination ->
-                    navController.navigate(destination.path) {
-                        popUpTo(navController.graph.findStartDestination().id) {
-                            saveState = true
+            if (currentDestination.isRootDestination) {
+                BottomNavigationBar(
+                    currentDestination = currentDestination,
+                    onNavigate = { destination ->
+                        navController.navigate(destination.path) {
+                            popUpTo(navController.graph.findStartDestination().id) {
+                                saveState = true
+                            }
+                            launchSingleTop = true
+                            restoreState = true
                         }
-                        launchSingleTop = true
-                        restoreState = true
-                    }
-                })
+                    })
+            }
         },
         topBar = {
             DestinationTopBar(
                 modifier = modifier,
-                currentDestination = currentDestination
+                currentDestination = currentDestination,
+                onNavigate = { destination ->
+                    navController.navigate(destination.path)
+                },
+                onNavigateUp = {
+                    navController.popBackStack()
+                }
             )
         }) {
         Navigation(modifier = Modifier.fillMaxSize(), navController = navController)

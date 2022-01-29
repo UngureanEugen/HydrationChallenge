@@ -1,5 +1,7 @@
 package com.compose.hydration.ui
 
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -22,13 +24,18 @@ fun Navigation(modifier: Modifier = Modifier, navController: NavHostController) 
             composable(Destination.Today.path) {
                 Today(modifier = modifier)
             }
-            composable(Destination.Settings.path) {
-                Settings(modifier = modifier)
+            composable(Destination.History.path) {
+                // History
+                Text(text = "History")
             }
         }
-        composable(Destination.History.path) {
-            // History
-            Text(text = "History")
+        composable(Destination.Settings.path) {
+            Settings(modifier = modifier, onAction = {
+                navController.navigate(Destination.Container.path)
+            })
+        }
+        composable(Destination.Container.path) {
+            Editor(modifier = modifier)
         }
     }
 }

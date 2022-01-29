@@ -20,12 +20,12 @@ val Typography = Typography(
     ),
     button = TextStyle(
         fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.W300,
+        fontWeight = FontWeight.W400,
         fontSize = 16.sp
     ),
     caption = TextStyle(
         fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.W300,
+        fontWeight = FontWeight.W400,
         fontSize = 11.sp
     ),
     subtitle1 = TextStyle(

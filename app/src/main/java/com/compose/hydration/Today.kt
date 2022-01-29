@@ -45,19 +45,21 @@ fun Today(modifier: Modifier = Modifier) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(vertical = 32.dp),
+                    .padding(all = 32.dp),
                 horizontalArrangement = Arrangement.Center
             ) {
-                Button(onClick = {}, modifier = Modifier.weight(1f, fill = false)) {
-                    Text("200 ml", style = MaterialTheme.typography.button)
+                Button(onClick = {}, modifier = Modifier.weight(1f)) {
+                    Text("200 ml")
                 }
+                Spacer(Modifier.width(8.dp))
                 Button(
                     onClick = {},
-                    modifier = Modifier.weight(1f, fill = false).padding(horizontal = 8.dp)
+                    modifier = Modifier.weight(1f)
                 ) {
                     Text("400 ml")
                 }
-                Button(onClick = {}, modifier = Modifier.weight(1f, fill = false)) {
+                Spacer(Modifier.width(8.dp))
+                Button(onClick = {}, modifier = Modifier.weight(1f)) {
                     Text("500 ml")
                 }
             }

@@ -15,6 +15,7 @@ sealed class Destination(
     companion object {
         fun fromString(route: String?): Destination {
             return when (route) {
+                Today.path -> Today
                 History.path -> History
                 Settings.path -> Settings
                 DailyGoal.path -> DailyGoal
