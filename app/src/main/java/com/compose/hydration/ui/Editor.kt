@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -14,11 +15,15 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.compose.hydration.EditorViewModel
 import com.compose.hydration.ui.theme.HydrationChallengeTheme
 import kotlin.math.min
 
 @Composable
 fun Editor(modifier: Modifier = Modifier) {
+    val viewModel: EditorViewModel = viewModel()
+    val uiState = viewModel.uiState.collectAsState()
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
         Text(
             "Here you can set your hydration goal based on your preferred unit of measurement",
@@ -32,8 +37,8 @@ fun Editor(modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             TextField(
-                "146",
-                onValueChange = {},
+                "${uiState.value.dailyGoal}",
+                onValueChange = {viewModel.saveDailyGoal(it.toInt())},
                 textStyle = MaterialTheme.typography.h4.copy(
                     fontWeight = FontWeight.Light,
                     textAlign = TextAlign.Center

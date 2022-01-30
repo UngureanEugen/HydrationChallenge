@@ -1,6 +1,9 @@
 package com.compose.hydration.ui
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -26,7 +29,9 @@ fun Navigation(modifier: Modifier = Modifier, navController: NavHostController) 
             }
             composable(Destination.History.path) {
                 // History
-                Text(text = "History")
+                Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colors.surface)) {
+                    Text(text = "History")
+                }
             }
         }
         composable(Destination.Settings.path) {

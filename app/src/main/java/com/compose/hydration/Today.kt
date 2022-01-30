@@ -1,6 +1,6 @@
 package com.compose.hydration
 
-import androidx.compose.foundation.Image
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
@@ -8,8 +8,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -18,58 +16,49 @@ import com.compose.hydration.ui.theme.HydrationChallengeTheme
 
 @Composable
 fun Today(modifier: Modifier = Modifier) {
-    Box(modifier = modifier, contentAlignment = Alignment.Center) {
-        Image(
-            painter = painterResource(R.drawable.leaf_bg),
-            contentDescription = null,
-            modifier = Modifier.fillMaxSize(),
-            contentScale = ContentScale.Crop,
-            alpha = 0.5f
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = "20%",
+            style = MaterialTheme.typography.h4,
+            color = MaterialTheme.colors.primary
         )
-        Column(
-            modifier = modifier,
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+        Text(
+            text = "of 2000 ml Goal",
+            style = MaterialTheme.typography.body2,
+            modifier = Modifier.padding(bottom = 8.dp)
+        )
+        Glass()
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(all = 32.dp),
+            horizontalArrangement = Arrangement.Center
         ) {
-            Text(
-                text = "20%",
-                style = MaterialTheme.typography.h4,
-                color = MaterialTheme.colors.primary
-            )
-            Text(
-                text = "of 2000 ml Goal",
-                style = MaterialTheme.typography.body2,
-                modifier = Modifier.padding(bottom = 8.dp)
-            )
-            Glass()
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(all = 32.dp),
-                horizontalArrangement = Arrangement.Center
-            ) {
-                Button(onClick = {}, modifier = Modifier.weight(1f)) {
-                    Text("200 ml")
-                }
-                Spacer(Modifier.width(8.dp))
-                Button(
-                    onClick = {},
-                    modifier = Modifier.weight(1f)
-                ) {
-                    Text("400 ml")
-                }
-                Spacer(Modifier.width(8.dp))
-                Button(onClick = {}, modifier = Modifier.weight(1f)) {
-                    Text("500 ml")
-                }
+            Button(onClick = {}, modifier = Modifier.weight(1f)) {
+                Text("200 ml")
             }
-            Text(
-                text = "Happy you'are back to track your healthy habit of staying hydrated",
-                modifier = Modifier.padding(horizontal = 32.dp),
-                textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.body2
-            )
+            Spacer(Modifier.width(8.dp))
+            Button(
+                onClick = {},
+                modifier = Modifier.weight(1f)
+            ) {
+                Text("400 ml")
+            }
+            Spacer(Modifier.width(8.dp))
+            Button(onClick = {}, modifier = Modifier.weight(1f)) {
+                Text("500 ml")
+            }
         }
+        Text(
+            text = "Happy you'are back to track your healthy habit of staying hydrated",
+            modifier = Modifier.padding(horizontal = 32.dp),
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.body2
+        )
     }
 }
 
