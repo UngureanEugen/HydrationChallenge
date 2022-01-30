@@ -6,9 +6,10 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -18,12 +19,12 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.compose.hydration.EditorViewModel
 import com.compose.hydration.ui.theme.HydrationChallengeTheme
-import kotlin.math.min
 
 @Composable
-fun Editor(modifier: Modifier = Modifier) {
-    val viewModel: EditorViewModel = viewModel()
-    val uiState = viewModel.uiState.collectAsState()
+fun Editor(modifier: Modifier = Modifier, editorViewModel: EditorViewModel) {
+    val uiState = editorViewModel.uiState.collectAsState()
+    var goal by remember { mutableStateOf(uiState.value.dailyGoal) }
+
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
         Text(
             "Here you can set your hydration goal based on your preferred unit of measurement",
@@ -37,8 +38,8 @@ fun Editor(modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             TextField(
-                "${uiState.value.dailyGoal}",
-                onValueChange = {viewModel.saveDailyGoal(it.toInt())},
+                "$goal",
+                onValueChange = {goal = it.toInt()},
                 textStyle = MaterialTheme.typography.h4.copy(
                     fontWeight = FontWeight.Light,
                     textAlign = TextAlign.Center
@@ -57,6 +58,7 @@ fun Editor(modifier: Modifier = Modifier) {
                 )
             )
             Text(
+                //todo map units
                 "milliliters (ml)",
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.h5,
@@ -70,6 +72,6 @@ fun Editor(modifier: Modifier = Modifier) {
 @Composable
 fun Preview_Container() {
     HydrationChallengeTheme {
-        Editor(modifier = Modifier.fillMaxSize())
+        Editor(modifier = Modifier.fillMaxSize(), editorViewModel = viewModel())
     }
 }

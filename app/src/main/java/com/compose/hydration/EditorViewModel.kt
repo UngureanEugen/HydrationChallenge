@@ -18,13 +18,13 @@ class EditorViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-           /* repository.preferencesFlow.collectLatest { state ->
+            repository.preferencesFlow.collectLatest { state ->
                 uiState.value = state
-            }*/
+            }
         }
     }
 
     fun saveDailyGoal(goal: Int) = viewModelScope.launch {
-//        repository.updateDailyGoal(goal)
+        repository.updateDailyGoal(goal)
     }
 }

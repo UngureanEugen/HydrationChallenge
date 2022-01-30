@@ -4,14 +4,15 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
+import com.compose.hydration.EditorViewModel
 import com.compose.hydration.Today
 import com.compose.hydration.model.Destination
 
@@ -40,7 +41,8 @@ fun Navigation(modifier: Modifier = Modifier, navController: NavHostController) 
             })
         }
         composable(Destination.Container.path) {
-            Editor(modifier = modifier)
+            val editorViewModel = hiltViewModel<EditorViewModel>()
+            Editor(modifier = modifier, editorViewModel)
         }
     }
 }
