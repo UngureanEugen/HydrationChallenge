@@ -1,6 +1,5 @@
 package com.compose.hydration
 
-import androidx.datastore.preferences.core.Preferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.compose.hydration.data.HydrationRepository
@@ -15,6 +14,7 @@ import javax.inject.Inject
 class HydrationViewModel @Inject constructor(
     private val repository: HydrationRepository
 ) : ViewModel() {
+
     val uiState = MutableStateFlow(HydrationState())
 
     init {
@@ -25,4 +25,7 @@ class HydrationViewModel @Inject constructor(
         }
     }
 
+    fun changeUnitType(unitType: String) = viewModelScope.launch {
+        repository.updateUnits(unitType)
+    }
 }

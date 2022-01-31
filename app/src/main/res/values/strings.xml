@@ -15,4 +15,8 @@
     <string name="setting_container_large">Container 3</string>
     <string name="setting_description">These containers will appear on your main screen so you can easily tap on them and track your intake.</string>
     <string name="goal_description">Here you can set your hydration goal based on your preferred unit of measurement</string>
+    <string-array name="setting_options_units">
+        <item>milliliters (ml)</item>
+        <item>ounces (oz)</item>
+    </string-array>
 </resources>

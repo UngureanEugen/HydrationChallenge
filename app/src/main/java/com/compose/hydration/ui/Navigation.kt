@@ -71,7 +71,8 @@ fun Navigation(
             )
         }
         composable(Destination.ChangeUnits.path) {
-            Text("tedf")
+            val viewModel = hiltViewModel<HydrationViewModel>()
+            ChangeUnitsItem(modifier, viewModel)
         }
     }
 }
