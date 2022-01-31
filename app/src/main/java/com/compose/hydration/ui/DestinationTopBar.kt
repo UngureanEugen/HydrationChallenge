@@ -22,7 +22,8 @@ fun DestinationTopBar(
     modifier: Modifier = Modifier,
     currentDestination: Destination,
     onNavigate: (destination: Destination) -> Unit,
-    onNavigateUp: () -> Unit
+    onNavigateUp: () -> Unit,
+    onSave: () -> Unit
 ) {
     Box {
         Row(
@@ -35,7 +36,8 @@ fun DestinationTopBar(
                     modifier = modifier,
                     destination = currentDestination,
                     onNavigate = onNavigate,
-                    onNavigateUp = onNavigateUp
+                    onNavigateUp = onNavigateUp,
+                    onSave = onSave
                 )
             }
         )
@@ -51,13 +53,14 @@ private fun AppBar(
     modifier: Modifier,
     destination: Destination,
     onNavigate: (destination: Destination) -> Unit,
-    onNavigateUp: () -> Unit
+    onNavigateUp: () -> Unit,
+    onSave: () -> Unit
 ) {
     when (destination) {
         Home, Today -> {
             TopAppBar(modifier = modifier, title = {
                 Text(
-                    text = "Today's progress",
+                    text = stringResource(R.string.toolbar_today),
                     style = MaterialTheme.typography.subtitle1
                 )
             }, actions = {
@@ -70,11 +73,37 @@ private fun AppBar(
                 }
             })
         }
-        Container -> {
-            Text("kdlf")
-        }
-        DailyGoal -> {
-            Text("kdlf")
+        SettingEditor -> {
+            Row(
+                Modifier.fillMaxWidth()
+                    .padding(
+                        PaddingValues(
+                            start = 4.dp,
+                            end = 4.dp
+                        )
+                    ).height(56.dp),
+                horizontalArrangement = Arrangement.Start,
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                TextButton(onClick = { onNavigateUp() }) {
+                    Text(
+                        text = stringResource(R.string.action_cancel),
+                        style = MaterialTheme.typography.button
+                    )
+                }
+                Text(
+                    text = "Title",
+                    modifier = Modifier.weight(1f),
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.subtitle1
+                )
+                TextButton(onClick = { onSave() }) {
+                    Text(
+                        text = stringResource(R.string.action_save),
+                        style = MaterialTheme.typography.button
+                    )
+                }
+            }
         }
         History -> {
             Text("kdlf")
@@ -111,8 +140,9 @@ fun Preview_DestinationAppBar() {
     HydrationChallengeTheme {
         DestinationTopBar(
             modifier = Modifier,
-            currentDestination = Settings,
+            currentDestination = SettingEditor,
             onNavigate = {},
-            onNavigateUp = {})
+            onNavigateUp = {}
+        ) {}
     }
 }

@@ -3,4 +3,14 @@
     <string name="glass">glass</string>
     <string name="title_settings">Settings</string>
     <string name="settings_back">Exit settings</string>
+    <string name="action_save">Save</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="toolbar_today">Today\'s progress</string>
+    <string name="setting_units">Units</string>
+    <string name="setting_daily_goal">Daily Goal</string>
+    <string name="setting_containers">Containers</string>
+    <string name="setting_container_small">Container 1</string>
+    <string name="setting_container_medium">Container 2</string>
+    <string name="setting_container_large">Container 3</string>
+    <string name="setting_description">These containers will appear on your main screen so you can easily tap on them and track your intake.</string>
 </resources>

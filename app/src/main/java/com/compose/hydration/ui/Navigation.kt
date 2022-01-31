@@ -9,15 +9,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
+import androidx.navigation.navArgument
 import com.compose.hydration.EditorViewModel
+import com.compose.hydration.HydrationViewModel
 import com.compose.hydration.Today
 import com.compose.hydration.model.Destination
+import com.compose.hydration.model.Setting
 
 @Composable
-fun Navigation(modifier: Modifier = Modifier, navController: NavHostController) {
+fun Navigation(
+    modifier: Modifier = Modifier,
+    navController: NavHostController,
+    editorViewModel: EditorViewModel
+) {
     NavHost(
         modifier = modifier,
         navController = navController,
@@ -36,13 +44,21 @@ fun Navigation(modifier: Modifier = Modifier, navController: NavHostController) 
             }
         }
         composable(Destination.Settings.path) {
-            Settings(modifier = modifier, onAction = {
-                navController.navigate(Destination.Container.path)
+            val viewModel = hiltViewModel<HydrationViewModel>()
+            Settings(modifier = modifier, viewModel = viewModel, onAction = { setting ->
+                navController.navigate(Destination.SettingEditor.path.replace("{type}", setting.type))
             })
         }
-        composable(Destination.Container.path) {
-            val editorViewModel = hiltViewModel<EditorViewModel>()
-            Editor(modifier = modifier, editorViewModel)
+        composable(
+            Destination.SettingEditor.path,
+            arguments = listOf(navArgument("type", builder = { type = NavType.StringType }))
+        ) { backStackEntry ->
+            val setting = Setting.fromString(backStackEntry.arguments?.getString("type"))
+            editorViewModel.with(setting)
+            Editor(
+                modifier = modifier,
+                editorViewModel
+            )
         }
     }
 }

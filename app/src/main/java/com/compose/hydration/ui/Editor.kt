@@ -18,12 +18,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.compose.hydration.EditorViewModel
+import com.compose.hydration.HydrationViewModel
+import com.compose.hydration.model.Setting
+import com.compose.hydration.model.Units
 import com.compose.hydration.ui.theme.HydrationChallengeTheme
 
 @Composable
-fun Editor(modifier: Modifier = Modifier, editorViewModel: EditorViewModel) {
-    val uiState = editorViewModel.uiState.collectAsState()
-    var goal by remember { mutableStateOf(uiState.value.dailyGoal) }
+fun Editor(modifier: Modifier = Modifier, viewModel: EditorViewModel) {
+    val uiState = viewModel.uiState.collectAsState().value
+//    var goal by remember { mutableStateOf(uiState.value.dailyGoal) }
 
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
         Text(
@@ -38,8 +41,8 @@ fun Editor(modifier: Modifier = Modifier, editorViewModel: EditorViewModel) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             TextField(
-                "$goal",
-                onValueChange = {goal = it.toInt()},
+                uiState.quantity,
+                onValueChange = {viewModel.update(it)},
                 textStyle = MaterialTheme.typography.h4.copy(
                     fontWeight = FontWeight.Light,
                     textAlign = TextAlign.Center
@@ -72,6 +75,6 @@ fun Editor(modifier: Modifier = Modifier, editorViewModel: EditorViewModel) {
 @Composable
 fun Preview_Container() {
     HydrationChallengeTheme {
-        Editor(modifier = Modifier.fillMaxSize(), editorViewModel = viewModel())
+        Editor(modifier = Modifier.fillMaxSize(), viewModel = viewModel())
     }
 }

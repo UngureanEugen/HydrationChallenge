@@ -16,11 +16,13 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
     @Singleton
     @Provides
     fun provideHydrationRepository(
         @ApplicationContext app: Context
     ): HydrationRepository = HydrationRepository(app.dataStore)
+
 }
 
 private val Context.dataStore by preferencesDataStore(name = Constants.PREFERENCES_NAME)

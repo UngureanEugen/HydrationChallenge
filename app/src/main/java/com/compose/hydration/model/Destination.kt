@@ -18,8 +18,7 @@ sealed class Destination(
                 Today.path -> Today
                 History.path -> History
                 Settings.path -> Settings
-                DailyGoal.path -> DailyGoal
-                Container.path -> Container
+                SettingEditor.path -> SettingEditor
                 else -> Home
             }
         }
@@ -37,7 +36,5 @@ sealed class Destination(
 
     object Settings : Destination("settings", R.drawable.ic_back, isRootDestination = false)
 
-    object DailyGoal : Destination("dailyGoal", isRootDestination = false)
-
-    object Container : Destination("Container", isRootDestination = false)
+    object SettingEditor : Destination("setting/{type}", isRootDestination = false)
 }
