@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.compose.hydration.R
+import com.compose.hydration.model.DailyGoal
 import com.compose.hydration.model.Destination
 import com.compose.hydration.model.Destination.*
 import com.compose.hydration.ui.theme.HydrationChallengeTheme
@@ -21,6 +22,7 @@ import com.compose.hydration.ui.theme.HydrationChallengeTheme
 fun DestinationTopBar(
     modifier: Modifier = Modifier,
     currentDestination: Destination,
+    title: String,
     onNavigate: (destination: Destination) -> Unit,
     onNavigateUp: () -> Unit,
     onSave: () -> Unit
@@ -35,6 +37,7 @@ fun DestinationTopBar(
                 AppBar(
                     modifier = modifier,
                     destination = currentDestination,
+                    title = title,
                     onNavigate = onNavigate,
                     onNavigateUp = onNavigateUp,
                     onSave = onSave
@@ -52,6 +55,7 @@ fun DestinationTopBar(
 private fun AppBar(
     modifier: Modifier,
     destination: Destination,
+    title: String,
     onNavigate: (destination: Destination) -> Unit,
     onNavigateUp: () -> Unit,
     onSave: () -> Unit
@@ -92,7 +96,7 @@ private fun AppBar(
                     )
                 }
                 Text(
-                    text = "Title",
+                    text = title,
                     modifier = Modifier.weight(1f),
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.subtitle1
@@ -141,6 +145,7 @@ fun Preview_DestinationAppBar() {
         DestinationTopBar(
             modifier = Modifier,
             currentDestination = SettingEditor,
+            stringResource(DailyGoal.label),
             onNavigate = {},
             onNavigateUp = {}
         ) {}

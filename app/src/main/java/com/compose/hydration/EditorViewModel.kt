@@ -1,13 +1,9 @@
 package com.compose.hydration
 
-import androidx.datastore.preferences.core.Preferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.compose.hydration.data.HydrationRepository
-import com.compose.hydration.model.DailyGoal
-import com.compose.hydration.model.EditorState
-import com.compose.hydration.model.HydrationState
-import com.compose.hydration.model.Setting
+import com.compose.hydration.model.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -36,7 +32,19 @@ class EditorViewModel @Inject constructor(
         uiState.emit(uiState.value.copy(quantity = quantity))
     }
 
-    fun with(setting: Setting) = viewModelScope.launch {
-        uiState.emit(uiState.value.copy(setting = setting))
+    fun modify(setting: Setting) = viewModelScope.launch {
+        repository.preferencesFlow.collectLatest { prefs ->
+            val quantity = when (setting) {
+                ContainerLarge -> prefs.containerLarge
+                ContainerMedium -> prefs.containerMedium
+                ContainerSmall -> prefs.containerSmall
+                DailyGoal -> prefs.dailyGoal
+                Units -> 0
+            }
+            val units = prefs.units
+            uiState.value = uiState.value.copy(
+                quantity = quantity.toString(), unit = units, setting = setting
+            )
+        }
     }
 }

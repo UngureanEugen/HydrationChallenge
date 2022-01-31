@@ -54,7 +54,7 @@ fun Navigation(
             arguments = listOf(navArgument("type", builder = { type = NavType.StringType }))
         ) { backStackEntry ->
             val setting = Setting.fromString(backStackEntry.arguments?.getString("type"))
-            editorViewModel.with(setting)
+            editorViewModel.modify(setting)
             Editor(
                 modifier = modifier,
                 editorViewModel

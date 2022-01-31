@@ -27,13 +27,26 @@ sealed class Setting(
 
 object Units : Setting("unit", R.string.setting_units, PreferencesKeys.UNIT.name)
 
-object DailyGoal : Setting("dailyGoal", R.string.setting_daily_goal, PreferencesKeys.DAILY_GOAL.name)
+object DailyGoal :
+    Setting("dailyGoal", R.string.setting_daily_goal, PreferencesKeys.DAILY_GOAL.name)
 
 object ContainerSmall :
-    Setting("containerSmall", R.string.setting_container_small, PreferencesKeys.CONTAINER_SMALL.name)
+    Setting(
+        "containerSmall",
+        R.string.setting_container_small,
+        PreferencesKeys.CONTAINER_SMALL.name
+    )
 
 object ContainerMedium :
-    Setting("containerMedium", R.string.setting_container_medium, PreferencesKeys.CONTAINER_MEDIUM.name)
+    Setting(
+        "containerMedium",
+        R.string.setting_container_medium,
+        PreferencesKeys.CONTAINER_MEDIUM.name
+    )
 
 object ContainerLarge :
-    Setting("containerLarge", R.string.setting_container_large, PreferencesKeys.CONTAINER_SMALL.name)
+    Setting(
+        "containerLarge",
+        R.string.setting_container_large,
+        PreferencesKeys.CONTAINER_LARGE.name
+    )

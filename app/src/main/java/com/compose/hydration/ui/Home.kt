@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -28,7 +29,6 @@ fun Home(modifier: Modifier = Modifier, orientation: Int) {
         Destination.fromString(navBackStackEntry.value?.destination?.route)
     }
     val scaffoldState = rememberScaffoldState()
-    val coroutineScope = rememberCoroutineScope()
     val editorViewModel = hiltViewModel<EditorViewModel>()
     Scaffold(
         modifier = modifier,
@@ -61,7 +61,8 @@ fun Home(modifier: Modifier = Modifier, orientation: Int) {
                 onSave = {
                     editorViewModel.save()
                     navController.popBackStack()
-                }
+                },
+                title = stringResource(editorViewModel.uiState.value.setting.label)
             )
         }) {
         Box(modifier = modifier, contentAlignment = Alignment.Center) {
@@ -72,7 +73,11 @@ fun Home(modifier: Modifier = Modifier, orientation: Int) {
                 contentScale = ContentScale.Crop,
                 alpha = 0.5f
             )
-            Navigation(modifier = Modifier.fillMaxSize(), navController = navController, editorViewModel)
+            Navigation(
+                modifier = Modifier.fillMaxSize(),
+                navController = navController,
+                editorViewModel
+            )
         }
     }
 }

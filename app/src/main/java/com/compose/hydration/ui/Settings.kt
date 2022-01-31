@@ -42,14 +42,14 @@ fun SettingsList(
         SettingItem(
             modifier = modifier,
             title = stringResource(R.string.setting_units),
-            unit = state.unit
+            unit = state.units
         ) { onAction(com.compose.hydration.model.Units) }
         Divider(modifier = modifier, color = MaterialTheme.colors.onSurface.copy(alpha = 0.3f))
         SettingItem(
             modifier = modifier,
             title = stringResource(R.string.setting_daily_goal),
             value = "${state.dailyGoal}",
-            unit = state.unit
+            unit = state.units
         ) { onAction(DailyGoal) }
         Divider(modifier = modifier, color = MaterialTheme.colors.onSurface.copy(alpha = 0.3f))
         SectionSpacer(modifier = modifier)
@@ -62,8 +62,8 @@ fun SettingsList(
         SettingItem(
             modifier = modifier,
             title = stringResource(R.string.setting_container_small),
-            value = "${state.container_small}",
-            unit = state.unit
+            value = "${state.containerSmall}",
+            unit = state.units
         ) {
             onAction(ContainerSmall)
         }
@@ -71,15 +71,15 @@ fun SettingsList(
         SettingItem(
             modifier = modifier,
             title = stringResource(R.string.setting_container_medium),
-            value = "${state.container_medium}",
-            unit = state.unit
+            value = "${state.containerMedium}",
+            unit = state.units
         ) { onAction(ContainerMedium) }
         Divider(modifier = modifier, color = MaterialTheme.colors.onSurface.copy(alpha = 0.3f))
         SettingItem(
             modifier = modifier,
             title = stringResource(R.string.setting_container_large),
-            value = "${state.container_large}",
-            unit = state.unit
+            value = "${state.containerLarge}",
+            unit = state.units
         ) { onAction(ContainerLarge) }
         Divider(modifier = modifier, color = MaterialTheme.colors.onSurface.copy(alpha = 0.3f))
         Text(
