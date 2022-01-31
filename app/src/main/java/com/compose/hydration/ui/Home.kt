@@ -18,6 +18,7 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.compose.hydration.EditorViewModel
+import com.compose.hydration.HydrationViewModel
 import com.compose.hydration.R
 import com.compose.hydration.model.Destination
 
@@ -30,6 +31,7 @@ fun Home(modifier: Modifier = Modifier, orientation: Int) {
     }
     val scaffoldState = rememberScaffoldState()
     val editorViewModel = hiltViewModel<EditorViewModel>()
+    val hydrationViewModel = hiltViewModel<HydrationViewModel>()
     Scaffold(
         modifier = modifier,
         scaffoldState = scaffoldState,
@@ -76,7 +78,8 @@ fun Home(modifier: Modifier = Modifier, orientation: Int) {
             Navigation(
                 modifier = Modifier.fillMaxSize(),
                 navController = navController,
-                editorViewModel
+                editorViewModel,
+                hydrationViewModel
             )
         }
     }

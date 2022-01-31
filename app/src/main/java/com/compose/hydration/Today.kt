@@ -6,16 +6,19 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.compose.hydration.ui.Glass
 import com.compose.hydration.ui.theme.HydrationChallengeTheme
 
 @Composable
-fun Today(modifier: Modifier = Modifier) {
+fun TodayItem(modifier: Modifier = Modifier, viewModel: HydrationViewModel) {
+    val state = viewModel.uiState.collectAsState().value
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.Center,
@@ -39,18 +42,18 @@ fun Today(modifier: Modifier = Modifier) {
             horizontalArrangement = Arrangement.Center
         ) {
             Button(onClick = {}, modifier = Modifier.weight(1f)) {
-                Text("200 ml")
+                Text(text = "${state.containerSmall}")
             }
             Spacer(Modifier.width(8.dp))
             Button(
                 onClick = {},
                 modifier = Modifier.weight(1f)
             ) {
-                Text("400 ml")
+                Text(text = "${state.containerMedium}")
             }
             Spacer(Modifier.width(8.dp))
             Button(onClick = {}, modifier = Modifier.weight(1f)) {
-                Text("500 ml")
+                Text(text = "${state.containerLarge}")
             }
         }
         Text(
@@ -66,6 +69,6 @@ fun Today(modifier: Modifier = Modifier) {
 @Composable
 fun Preview_Today(modifier: Modifier = Modifier) {
     HydrationChallengeTheme {
-        Today(modifier = modifier)
+        TodayItem(modifier = modifier, viewModel = viewModel())
     }
 }

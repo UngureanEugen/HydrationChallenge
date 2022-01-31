@@ -7,7 +7,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -16,7 +15,7 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.navArgument
 import com.compose.hydration.EditorViewModel
 import com.compose.hydration.HydrationViewModel
-import com.compose.hydration.Today
+import com.compose.hydration.TodayItem
 import com.compose.hydration.model.Destination
 import com.compose.hydration.model.Setting
 import com.compose.hydration.model.Units
@@ -25,7 +24,8 @@ import com.compose.hydration.model.Units
 fun Navigation(
     modifier: Modifier = Modifier,
     navController: NavHostController,
-    editorViewModel: EditorViewModel
+    editorViewModel: EditorViewModel,
+    hydrationViewModel: HydrationViewModel
 ) {
     NavHost(
         modifier = modifier,
@@ -35,7 +35,7 @@ fun Navigation(
         navigation(startDestination = Destination.Today.path, route = Destination.Home.path) {
             // Today
             composable(Destination.Today.path) {
-                Today(modifier = modifier)
+                TodayItem(modifier = modifier, hydrationViewModel)
             }
             composable(Destination.History.path) {
                 // History
@@ -45,8 +45,7 @@ fun Navigation(
             }
         }
         composable(Destination.Settings.path) {
-            val viewModel = hiltViewModel<HydrationViewModel>()
-            Settings(modifier = modifier, viewModel = viewModel, onAction = { setting ->
+            Settings(modifier = modifier, viewModel = hydrationViewModel, onAction = { setting ->
                 if (setting == Units) {
                     navController.navigate(Destination.ChangeUnits.path)
                 } else {
@@ -71,8 +70,7 @@ fun Navigation(
             )
         }
         composable(Destination.ChangeUnits.path) {
-            val viewModel = hiltViewModel<HydrationViewModel>()
-            ChangeUnitsItem(modifier, viewModel)
+            ChangeUnitsItem(modifier, hydrationViewModel)
         }
     }
 }
