@@ -11,6 +11,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
@@ -19,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.compose.hydration.EditorViewModel
 import com.compose.hydration.HydrationViewModel
+import com.compose.hydration.R
 import com.compose.hydration.model.Setting
 import com.compose.hydration.model.Units
 import com.compose.hydration.ui.theme.HydrationChallengeTheme
@@ -26,11 +28,10 @@ import com.compose.hydration.ui.theme.HydrationChallengeTheme
 @Composable
 fun Editor(modifier: Modifier = Modifier, viewModel: EditorViewModel) {
     val uiState = viewModel.uiState.collectAsState().value
-//    var goal by remember { mutableStateOf(uiState.value.dailyGoal) }
 
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
         Text(
-            "Here you can set your hydration goal based on your preferred unit of measurement",
+            stringResource(R.string.goal_description),
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(0.65f).padding(top = 32.dp),
             style = MaterialTheme.typography.body2

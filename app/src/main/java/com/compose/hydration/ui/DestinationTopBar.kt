@@ -62,12 +62,7 @@ private fun AppBar(
 ) {
     when (destination) {
         Home, Today -> {
-            TopAppBar(modifier = modifier, title = {
-                Text(
-                    text = stringResource(R.string.toolbar_today),
-                    style = MaterialTheme.typography.subtitle1
-                )
-            }, actions = {
+            ParentTopAppBar(modifier, R.string.toolbar_today, actions = {
                 IconButton(onClick = { onNavigate(Settings) }) {
                     Icon(
                         imageVector = Icons.Default.Settings,
@@ -77,64 +72,10 @@ private fun AppBar(
                 }
             })
         }
-        SettingEditor -> {
-            Row(
-                Modifier.fillMaxWidth()
-                    .padding(
-                        PaddingValues(
-                            start = 4.dp,
-                            end = 4.dp
-                        )
-                    ).height(56.dp),
-                horizontalArrangement = Arrangement.Start,
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                TextButton(onClick = { onNavigateUp() }) {
-                    Text(
-                        text = stringResource(R.string.action_cancel),
-                        style = MaterialTheme.typography.button
-                    )
-                }
-                Text(
-                    text = title,
-                    modifier = Modifier.weight(1f),
-                    textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.subtitle1
-                )
-                TextButton(onClick = { onSave() }) {
-                    Text(
-                        text = stringResource(R.string.action_save),
-                        style = MaterialTheme.typography.button
-                    )
-                }
-            }
-        }
-        History -> {
-            Text("kdlf")
-        }
-        Settings -> {
-            TopAppBar(
-                title = {
-                    Text(
-                        color = MaterialTheme.colors.onSurface,
-                        fontSize = 18.sp,
-                        text = stringResource(id = R.string.title_settings)
-                    )
-                },
-                navigationIcon = {
-                    IconButton(onClick = {
-                        onNavigateUp()
-                    }) {
-                        Icon(
-                            tint = MaterialTheme.colors.onSurface,
-                            imageVector = Icons.Default.ArrowBack,
-                            contentDescription = stringResource(id = R.string.settings_back)
-                        )
-                    }
-                },
-                backgroundColor = MaterialTheme.colors.surface
-            )
-        }
+        SettingEditor -> EditorTopAppBar(title, onNavigateUp, onSave)
+        History ->  ParentTopAppBar(modifier, R.string.toolbar_history, {})
+        Settings -> ChildTopAppBar(R.string.title_settings, onNavigateUp)
+        ChangeUnits -> ChildTopAppBar(R.string.setting_units, onNavigateUp)
     }
 }
 

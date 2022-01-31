@@ -19,6 +19,7 @@ sealed class Destination(
                 History.path -> History
                 Settings.path -> Settings
                 SettingEditor.path -> SettingEditor
+                ChangeUnits.path -> ChangeUnits
                 else -> Home
             }
         }
@@ -34,7 +35,9 @@ sealed class Destination(
 
     object History : Destination("history", R.drawable.ic_history)
 
-    object Settings : Destination("settings", R.drawable.ic_back, isRootDestination = false)
+    object Settings : Destination("settings",isRootDestination = false)
 
     object SettingEditor : Destination("setting/{type}", isRootDestination = false)
+
+    object ChangeUnits : Destination("units",isRootDestination = false)
 }

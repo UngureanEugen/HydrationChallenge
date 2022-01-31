@@ -43,7 +43,7 @@ fun SettingsList(
             modifier = modifier,
             title = stringResource(R.string.setting_units),
             unit = state.units
-        ) { onAction(com.compose.hydration.model.Units) }
+        ) { onAction(Units) }
         Divider(modifier = modifier, color = MaterialTheme.colors.onSurface.copy(alpha = 0.3f))
         SettingItem(
             modifier = modifier,

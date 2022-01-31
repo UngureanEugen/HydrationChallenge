@@ -19,6 +19,7 @@ import com.compose.hydration.HydrationViewModel
 import com.compose.hydration.Today
 import com.compose.hydration.model.Destination
 import com.compose.hydration.model.Setting
+import com.compose.hydration.model.Units
 
 @Composable
 fun Navigation(
@@ -46,7 +47,16 @@ fun Navigation(
         composable(Destination.Settings.path) {
             val viewModel = hiltViewModel<HydrationViewModel>()
             Settings(modifier = modifier, viewModel = viewModel, onAction = { setting ->
-                navController.navigate(Destination.SettingEditor.path.replace("{type}", setting.type))
+                if (setting == Units) {
+                    navController.navigate(Destination.ChangeUnits.path)
+                } else {
+                    navController.navigate(
+                        Destination.SettingEditor.path.replace(
+                            "{type}",
+                            setting.type
+                        )
+                    )
+                }
             })
         }
         composable(
@@ -54,11 +64,14 @@ fun Navigation(
             arguments = listOf(navArgument("type", builder = { type = NavType.StringType }))
         ) { backStackEntry ->
             val setting = Setting.fromString(backStackEntry.arguments?.getString("type"))
-            editorViewModel.modify(setting)
+            editorViewModel.use(setting)
             Editor(
                 modifier = modifier,
                 editorViewModel
             )
+        }
+        composable(Destination.ChangeUnits.path) {
+            Text("tedf")
         }
     }
 }

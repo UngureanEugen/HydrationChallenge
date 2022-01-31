@@ -59,8 +59,8 @@ fun Home(modifier: Modifier = Modifier, orientation: Int) {
                     navController.popBackStack()
                 },
                 onSave = {
-                    editorViewModel.save()
                     navController.popBackStack()
+                    editorViewModel.save()
                 },
                 title = stringResource(editorViewModel.uiState.value.setting.label)
             )
