@@ -6,5 +6,5 @@ data class HydrationState(
     val containerSmall: Int = 200,
     val containerMedium: Int = 400,
     val containerLarge: Int = 500,
-    val currentHydration: Hydration? = null,
+    val currentHydration: Hydration? = null
 )

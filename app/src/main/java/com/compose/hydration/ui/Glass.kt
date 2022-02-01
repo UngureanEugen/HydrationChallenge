@@ -23,10 +23,14 @@ import com.compose.hydration.R
 
 @Preview
 @Composable
-fun Glass(modifier: Modifier = Modifier, quantity: Int = 200, units: String = "ml") {
+fun Glass(
+    modifier: Modifier = Modifier,
+    quantity: Int = 200,
+    units: String = "ml",
+    progress: Float = 0.5f
+) {
     val vector = ImageVector.vectorResource(id = R.drawable.ic_glass_empty)
     val painter = rememberVectorPainter(image = vector)
-    val progress = 0.5f
     Box(
         contentAlignment = Alignment.BottomCenter,
         modifier = modifier.wrapContentSize()

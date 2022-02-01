@@ -27,7 +27,7 @@ fun TodayItem(modifier: Modifier = Modifier, viewModel: HydrationViewModel) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "20%",
+            text = "${viewModel.dailyPercentage(state.currentHydration)}%",
             style = MaterialTheme.typography.h4,
             color = MaterialTheme.colors.primary
         )
@@ -36,7 +36,11 @@ fun TodayItem(modifier: Modifier = Modifier, viewModel: HydrationViewModel) {
             style = MaterialTheme.typography.body2,
             modifier = Modifier.padding(bottom = 8.dp)
         )
-        Glass(quantity = state.currentHydration?.quantity ?: 0, units = state.units)
+        Glass(
+            quantity = state.currentHydration?.quantity ?: 0,
+            units = state.units,
+            progress = (viewModel.dailyPercentage(state.currentHydration) / 100f)
+        )
         Row(
             modifier = Modifier
                 .fillMaxWidth()
