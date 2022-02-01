@@ -63,8 +63,7 @@ fun Editor(modifier: Modifier = Modifier, viewModel: EditorViewModel) {
                 )
             )
             Text(
-                //todo map units
-                "${unitsLabel}",
+                "$unitsLabel",
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.h5,
                 modifier = Modifier.padding(all = 8.dp)
