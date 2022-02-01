@@ -16,8 +16,9 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.compose.hydration.HydrationViewModel
+import com.compose.hydration.viewmodel.HydrationViewModel
 import com.compose.hydration.R
+import com.compose.hydration.ui.setting.SectionSpacer
 import com.compose.hydration.ui.theme.HydrationChallengeTheme
 
 @Composable
@@ -50,7 +51,7 @@ fun ChangeUnitsItem(modifier: Modifier, viewModel: HydrationViewModel) {
                             .weight(1f)
                             .padding(16.dp)
                     )
-                    if(state.units.equals(option.first)) {
+                    if(state.units == option.first) {
                         Image(
                             imageVector = ImageVector.vectorResource(id = R.drawable.ic_checkmark_goal),
                             contentDescription = null,

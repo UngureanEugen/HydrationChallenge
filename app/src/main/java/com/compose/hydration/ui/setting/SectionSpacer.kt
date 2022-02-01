@@ -1,4 +1,4 @@
-package com.compose.hydration.ui
+package com.compose.hydration.ui.setting
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

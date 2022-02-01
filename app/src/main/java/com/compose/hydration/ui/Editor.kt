@@ -9,6 +9,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -16,13 +17,18 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.compose.hydration.EditorViewModel
+import com.compose.hydration.viewmodel.EditorViewModel
 import com.compose.hydration.R
 import com.compose.hydration.ui.theme.HydrationChallengeTheme
 
 @Composable
 fun Editor(modifier: Modifier = Modifier, viewModel: EditorViewModel) {
     val uiState = viewModel.uiState.collectAsState().value
+
+    val keys = listOf("ml", "oz")
+    val unitsLabel = keys
+        .zip(stringArrayResource(id = R.array.setting_options_units))
+        .find { it.first == uiState.unit }?.second
 
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
         Text(
@@ -38,7 +44,7 @@ fun Editor(modifier: Modifier = Modifier, viewModel: EditorViewModel) {
         ) {
             TextField(
                 uiState.quantity,
-                onValueChange = {viewModel.update(it)},
+                onValueChange = { viewModel.update(it) },
                 textStyle = MaterialTheme.typography.h4.copy(
                     fontWeight = FontWeight.Light,
                     textAlign = TextAlign.Center
@@ -58,7 +64,7 @@ fun Editor(modifier: Modifier = Modifier, viewModel: EditorViewModel) {
             )
             Text(
                 //todo map units
-                "milliliters (ml)",
+                "${unitsLabel}",
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.h5,
                 modifier = Modifier.padding(all = 8.dp)

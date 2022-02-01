@@ -1,10 +1,11 @@
-package com.compose.hydration
+package com.compose.hydration.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.compose.hydration.data.Hydration
 import com.compose.hydration.data.HydrationRepository
 import com.compose.hydration.data.HydrationState
+import com.compose.hydration.data.dailyPercentage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -43,8 +44,7 @@ class HydrationViewModel @Inject constructor(
     }
 
     fun dailyPercentage(hydration: Hydration?): Int {
-        val currentHydration = hydration?.quantity ?: 0
-        return ((currentHydration / uiState.value.dailyGoal.toFloat()) * 100).roundToInt()
+        return hydration?.dailyPercentage(uiState.value.dailyGoal.toFloat()) ?: 0
     }
 
     fun drink(quantity: Int) = viewModelScope.launch {

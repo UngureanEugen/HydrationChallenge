@@ -1,4 +1,4 @@
-package com.compose.hydration
+package com.compose.hydration.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

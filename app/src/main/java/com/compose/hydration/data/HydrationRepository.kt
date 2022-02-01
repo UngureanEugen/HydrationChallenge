@@ -3,7 +3,6 @@ package com.compose.hydration.data
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.*
 import kotlinx.coroutines.flow.*
-import java.time.LocalDate
 import java.util.*
 import javax.inject.Inject
 
@@ -45,23 +44,30 @@ class HydrationRepository @Inject constructor(
         }
     }
 
-    fun today() = hydrationDao.findHydration(currentDateWithoutHours())
+    fun today() = hydrationDao.findHydration(dateWithoutHours())
 
     suspend fun increaseHydration(current: Hydration?, quantity: Int) {
         val hydrationLevel = current?.copy(quantity = current.quantity + quantity)
             ?: Hydration(
                 quantity = quantity,
-                day = currentDateWithoutHours()
+                day = dateWithoutHours()
             )
         hydrationDao.insert(hydrationLevel)
     }
 
-    private fun currentDateWithoutHours(): Date {
+    fun getHistory(days: Int): Flow<List<Hydration>> {
+        return hydrationDao.getHistory(dateWithoutHours(days))
+    }
+
+    private fun dateWithoutHours(daysAgo: Int = 0): Date {
         val calendar: Calendar = Calendar.getInstance()
         calendar.set(Calendar.HOUR_OF_DAY, 0)
         calendar.set(Calendar.MINUTE, 0)
         calendar.set(Calendar.SECOND, 0)
         calendar.set(Calendar.MILLISECOND, 0)
+        if (daysAgo > 0) {
+            calendar.add(Calendar.DAY_OF_YEAR, -daysAgo)
+        }
         return calendar.time
     }
 }

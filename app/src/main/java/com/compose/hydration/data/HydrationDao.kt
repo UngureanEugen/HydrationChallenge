@@ -9,13 +9,12 @@ import java.util.*
 
 @Dao
 interface HydrationDao {
-    @Query("SELECT * FROM hydrations ORDER BY day DESC")
-    fun getAll(): Flow<List<Hydration>>
+    @Query("SELECT * FROM hydrations WHERE day >= :minimDate ORDER BY day DESC")
+    fun getHistory(minimDate: Date): Flow<List<Hydration>>
 
     @Query("SELECT * FROM hydrations WHERE day = :date")
     fun findHydration(date: Date): Flow<Hydration>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(entry: Hydration)
-
 }

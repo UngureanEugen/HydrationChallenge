@@ -1,4 +1,4 @@
-package com.compose.hydration.ui
+package com.compose.hydration.ui.appbar
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -71,7 +71,7 @@ private fun AppBar(
             })
         }
         SettingEditor -> EditorTopAppBar(title, onNavigateUp, onSave)
-        History ->  ParentTopAppBar(modifier, R.string.toolbar_history, {})
+        History -> ParentTopAppBar(modifier, R.string.toolbar_history, {})
         Settings -> ChildTopAppBar(R.string.title_settings, onNavigateUp)
         ChangeUnits -> ChildTopAppBar(R.string.setting_units, onNavigateUp)
     }

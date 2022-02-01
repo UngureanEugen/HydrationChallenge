@@ -16,10 +16,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.compose.hydration.EditorViewModel
-import com.compose.hydration.HydrationViewModel
+import com.compose.hydration.viewmodel.EditorViewModel
+import com.compose.hydration.viewmodel.HydrationViewModel
 import com.compose.hydration.R
 import com.compose.hydration.data.Destination
+import com.compose.hydration.ui.appbar.DestinationTopBar
 
 @Composable
 fun Home(modifier: Modifier = Modifier, orientation: Int) {

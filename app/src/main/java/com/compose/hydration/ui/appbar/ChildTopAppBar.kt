@@ -1,4 +1,4 @@
-package com.compose.hydration.ui
+package com.compose.hydration.ui.appbar
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.fillMaxWidth

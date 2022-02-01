@@ -1,4 +1,4 @@
-package com.compose.hydration.ui
+package com.compose.hydration.ui.setting
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.compose.hydration.HydrationViewModel
+import com.compose.hydration.viewmodel.HydrationViewModel
 import com.compose.hydration.R
 import com.compose.hydration.data.*
 import com.compose.hydration.ui.theme.HydrationChallengeTheme
