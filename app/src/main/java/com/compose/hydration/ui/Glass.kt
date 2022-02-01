@@ -23,7 +23,7 @@ import com.compose.hydration.R
 
 @Preview
 @Composable
-fun Glass(modifier: Modifier = Modifier) {
+fun Glass(modifier: Modifier = Modifier, quantity: Int = 200, units: String = "ml") {
     val vector = ImageVector.vectorResource(id = R.drawable.ic_glass_empty)
     val painter = rememberVectorPainter(image = vector)
     val progress = 0.5f
@@ -55,6 +55,6 @@ fun Glass(modifier: Modifier = Modifier) {
                 }
             }
         })
-        Text(text = "200 ml", modifier = Modifier.padding(16.dp))
+        Text(text = "$quantity $units", modifier = Modifier.padding(16.dp))
     }
 }

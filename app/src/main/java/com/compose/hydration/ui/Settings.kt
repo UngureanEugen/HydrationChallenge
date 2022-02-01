@@ -13,7 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.compose.hydration.HydrationViewModel
 import com.compose.hydration.R
-import com.compose.hydration.model.*
+import com.compose.hydration.data.*
 import com.compose.hydration.ui.theme.HydrationChallengeTheme
 
 @Composable

@@ -7,7 +7,6 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -20,7 +19,7 @@ import androidx.navigation.compose.rememberNavController
 import com.compose.hydration.EditorViewModel
 import com.compose.hydration.HydrationViewModel
 import com.compose.hydration.R
-import com.compose.hydration.model.Destination
+import com.compose.hydration.data.Destination
 
 @Composable
 fun Home(modifier: Modifier = Modifier, orientation: Int) {

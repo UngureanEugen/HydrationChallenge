@@ -15,10 +15,9 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.navArgument
 import com.compose.hydration.EditorViewModel
 import com.compose.hydration.HydrationViewModel
-import com.compose.hydration.TodayItem
-import com.compose.hydration.model.Destination
-import com.compose.hydration.model.Setting
-import com.compose.hydration.model.Units
+import com.compose.hydration.data.Destination
+import com.compose.hydration.data.Setting
+import com.compose.hydration.data.Units
 
 @Composable
 fun Navigation(

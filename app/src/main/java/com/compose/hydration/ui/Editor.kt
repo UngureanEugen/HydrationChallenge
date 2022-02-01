@@ -6,8 +6,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -19,10 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.compose.hydration.EditorViewModel
-import com.compose.hydration.HydrationViewModel
 import com.compose.hydration.R
-import com.compose.hydration.model.Setting
-import com.compose.hydration.model.Units
 import com.compose.hydration.ui.theme.HydrationChallengeTheme
 
 @Composable

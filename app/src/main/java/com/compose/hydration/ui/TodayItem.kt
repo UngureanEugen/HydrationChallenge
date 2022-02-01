@@ -1,4 +1,4 @@
-package com.compose.hydration
+package com.compose.hydration.ui
 
 
 import androidx.compose.foundation.layout.*
@@ -9,11 +9,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.compose.hydration.ui.Glass
+import com.compose.hydration.HydrationViewModel
+import com.compose.hydration.R
 import com.compose.hydration.ui.theme.HydrationChallengeTheme
 
 @Composable
@@ -30,35 +32,41 @@ fun TodayItem(modifier: Modifier = Modifier, viewModel: HydrationViewModel) {
             color = MaterialTheme.colors.primary
         )
         Text(
-            text = "of 2000 ml Goal",
+            text = "of ${state.dailyGoal} ${state.units} Goal",
             style = MaterialTheme.typography.body2,
             modifier = Modifier.padding(bottom = 8.dp)
         )
-        Glass()
+        Glass(quantity = state.currentHydration?.quantity ?: 0, units = state.units)
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(all = 32.dp),
             horizontalArrangement = Arrangement.Center
         ) {
-            Button(onClick = {}, modifier = Modifier.weight(1f)) {
-                Text(text = "${state.containerSmall}")
+            Button(
+                onClick = { viewModel.drink(state.containerSmall) },
+                modifier = Modifier.weight(1f)
+            ) {
+                Text(text = "${state.containerSmall} ${state.units}")
             }
             Spacer(Modifier.width(8.dp))
             Button(
-                onClick = {},
+                onClick = { viewModel.drink(state.containerMedium) },
                 modifier = Modifier.weight(1f)
             ) {
-                Text(text = "${state.containerMedium}")
+                Text(text = "${state.containerMedium} ${state.units}")
             }
             Spacer(Modifier.width(8.dp))
-            Button(onClick = {}, modifier = Modifier.weight(1f)) {
-                Text(text = "${state.containerLarge}")
+            Button(
+                onClick = { viewModel.drink(state.containerLarge) },
+                modifier = Modifier.weight(1f)
+            ) {
+                Text(text = "${state.containerLarge} ${state.units}")
             }
         }
         Text(
-            text = "Happy you'are back to track your healthy habit of staying hydrated",
-            modifier = Modifier.padding(horizontal = 32.dp),
+            text = stringResource(R.string.today_description),
+            modifier = Modifier.fillMaxWidth(0.7f),
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.body2
         )

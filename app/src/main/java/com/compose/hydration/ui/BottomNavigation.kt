@@ -7,8 +7,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.compose.hydration.model.Destination
-import com.compose.hydration.model.NavigationItem.Companion.buildNavigationItems
+import com.compose.hydration.data.Destination
+import com.compose.hydration.data.NavigationItem.Companion.buildNavigationItems
 import com.compose.hydration.ui.theme.HydrationChallengeTheme
 
 @Composable

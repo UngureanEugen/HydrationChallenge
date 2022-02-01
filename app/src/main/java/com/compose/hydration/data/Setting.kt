@@ -1,7 +1,6 @@
-package com.compose.hydration.model
+package com.compose.hydration.data
 
 import androidx.annotation.StringRes
-import androidx.datastore.preferences.core.Preferences
 import com.compose.hydration.R
 import com.compose.hydration.data.HydrationRepository.PreferencesKeys
 

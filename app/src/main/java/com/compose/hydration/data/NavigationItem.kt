@@ -1,4 +1,4 @@
-package com.compose.hydration.model
+package com.compose.hydration.data
 
 import androidx.compose.material.Icon
 import androidx.compose.material.Text

@@ -1,10 +1,5 @@
-package com.compose.hydration.model
+package com.compose.hydration.data
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.vectorResource
 import com.compose.hydration.R
 
 sealed class Destination(

@@ -2,11 +2,15 @@ package com.compose.hydration.data
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.*
-import com.compose.hydration.model.HydrationState
 import kotlinx.coroutines.flow.*
+import java.time.LocalDate
+import java.util.*
 import javax.inject.Inject
 
-class HydrationRepository @Inject constructor(private val dataStore: DataStore<Preferences>) {
+class HydrationRepository @Inject constructor(
+    private val dataStore: DataStore<Preferences>,
+    private val hydrationDao: HydrationDao
+) {
 
     object PreferencesKeys {
         val DAILY_GOAL = intPreferencesKey("daily_goal")
@@ -39,5 +43,25 @@ class HydrationRepository @Inject constructor(private val dataStore: DataStore<P
         dataStore.edit { preferences ->
             preferences[PreferencesKeys.UNIT] = value
         }
+    }
+
+    fun today() = hydrationDao.findHydration(currentDateWithoutHours())
+
+    suspend fun increaseHydration(current: Hydration?, quantity: Int) {
+        val hydrationLevel = current?.copy(quantity = current.quantity + quantity)
+            ?: Hydration(
+                quantity = quantity,
+                day = currentDateWithoutHours()
+            )
+        hydrationDao.insert(hydrationLevel)
+    }
+
+    private fun currentDateWithoutHours(): Date {
+        val calendar: Calendar = Calendar.getInstance()
+        calendar.set(Calendar.HOUR_OF_DAY, 0)
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 0)
+        calendar.set(Calendar.MILLISECOND, 0)
+        return calendar.time
     }
 }

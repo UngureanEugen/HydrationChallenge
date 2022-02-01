@@ -1,4 +1,4 @@
-package com.compose.hydration.model
+package com.compose.hydration.data
 
 data class EditorState(
     val quantity: String = "2000",
