@@ -6,10 +6,10 @@ A hydration app is done for challenge https://github.com/garminmobilechallenge/h
 Screenshots
 -----------
 <p float="left">
-<img src="https://github.com/UngureanEugen/HydrationChallenge/blob/development/screenshots/hydration_challenge_1.png" width="230">
-<img src="https://github.com/UngureanEugen/HydrationChallenge/blob/development/screenshots/hydration_challenge_2.png" width="230">
-<img src="https://github.com/UngureanEugen/HydrationChallenge/blob/development/screenshots/hydration_challenge_3.png" width="230">
-<img src="https://github.com/UngureanEugen/HydrationChallenge/blob/development/screenshots/hydration_challenge_4.png" width="230">
+<img src="https://github.com/UngureanEugen/HydrationChallenge/blob/development/screenshots/hydration_challenge_1.png" width="200">
+<img src="https://github.com/UngureanEugen/HydrationChallenge/blob/development/screenshots/hydration_challenge_2.png" width="200">
+<img src="https://github.com/UngureanEugen/HydrationChallenge/blob/development/screenshots/hydration_challenge_3.png" width="200">
+<img src="https://github.com/UngureanEugen/HydrationChallenge/blob/development/screenshots/hydration_challenge_4.png" width="200">
 </p>
 
 Libraries Used
